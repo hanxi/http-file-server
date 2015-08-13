@@ -18,9 +18,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 mimetypes.init()
 
-g_filepath = sys.argv[1]
-if g_filepath[-1]!=os.sep:
-    g_filepath += os.sep
+g_filepath = ""
 
 def transDicts(params):
     dicts={}
@@ -121,6 +119,12 @@ def run(port):
     httpd.serve_forever()
 
 if __name__=='__main__':
+    g_filepath = "./files/"
+    if len(sys.argv)>=2:
+        g_filepath = sys.argv[2]
+    if g_filepath[-1]!=os.sep:
+        g_filepath += os.sep
+
     port = 8000
     if len(sys.argv)==3:
         port = int(sys.argv[2])
