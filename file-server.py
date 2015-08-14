@@ -65,7 +65,7 @@ class HTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             filelist = []
             for filename in os.listdir(fn):
                 if filename[0] != ".":
-                    filepath = "%s/%s" % (fn, filename)
+                    filepath = "%s%s%s" % (fn, os.sep, filename)
                     if os.path.isdir(filepath):
                         filename += os.sep
                     mtime = os.path.getmtime(filepath)
@@ -130,10 +130,9 @@ if __name__=='__main__':
     if g_filepath[-1]!=os.sep:
         g_filepath += os.sep
     g_filepath = g_filepath.replace("/",os.sep)
-        
+
     port = 8000
     if len(sys.argv)==3:
         port = int(sys.argv[2])
 
     run(port)
-
