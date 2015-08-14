@@ -40,7 +40,7 @@ class HTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     def do_GET(self):
         query = urllib.splitquery(self.path)
-        path = query[0]
+        path = urllib.unquote_plus(query[0]).decode("utf-8", 'ignore')
         queryParams = {}
 
         if '?' in self.path:
