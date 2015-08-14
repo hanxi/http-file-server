@@ -68,7 +68,7 @@ class HTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                     filepath = "%s/%s" % (fn, filename)
                     if os.path.isdir(filepath):
                         filename += os.sep
-                    mtime = os.path.getmtime(fn)
+                    mtime = os.path.getmtime(filepath)
                     filelist.append({'filename':filename,'mtime':mtime})
             content = json.dumps(filelist)
         else:
