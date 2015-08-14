@@ -70,6 +70,10 @@ class HTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                         filename += os.sep
                     filelist.append(filename)
             content = json.dumps(filelist)
+        else:
+            print(g_filepath, path, fn)
+            content = "<h1>404<h1>"
+            self.send_header("content-type","text/html")
 
         self.end_headers()
         self.wfile.write(content)
@@ -121,10 +125,11 @@ def run(port):
 if __name__=='__main__':
     g_filepath = "./files/"
     if len(sys.argv)>=2:
-        g_filepath = sys.argv[2]
+        g_filepath = sys.argv[1]
     if g_filepath[-1]!=os.sep:
         g_filepath += os.sep
-
+    g_filepath = g_filepath.replace("/",os.sep)
+        
     port = 8000
     if len(sys.argv)==3:
         port = int(sys.argv[2])
