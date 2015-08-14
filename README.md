@@ -24,9 +24,10 @@ GET /pathtofile/filename
 GET /path
 ```
 返回文件列表为 `JSON` 数组，文件名末尾带有 `/` 的表示是文件夹。
+`filename` 为文件名，`mtime` 为修改时间。
 
 ```json
-["f1.txt","f2.txt","p3/"]
+[{"filename":"f1.txt","mtime":1001},{"filename":"p3/","mtime":1002}]
 ```
 
 ### 3. 上传文件
