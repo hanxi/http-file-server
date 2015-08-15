@@ -94,6 +94,7 @@ class HTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 filesize = int(self.headers["content-length"])
                 filecontent = self.rfile.read(filesize)
                 fn = queryParams["name"]
+                resultdict["filename"] = fn
                 fn = "%s%s" % (g_filepath, fn)
                 dirname = os.path.dirname(fn)
                 if not os.path.exists(dirname):
